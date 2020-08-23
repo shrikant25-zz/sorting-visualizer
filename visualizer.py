@@ -23,12 +23,12 @@ screen.fill(color[3])  # fills the screen background with color from dictionary
 
 class Game:
     def __init__(self):
-        self.quicksortbutton = Button(100, 550, 80, 30, 'arial', 20, 'QuickSort', 6, 7)
-        self.mergesortbutton = Button(190, 550, 85, 30, 'arial', 20, 'MergeSort', 6, 7)
-        self.bubblesortbutton = Button(285, 550, 85, 30, 'arial', 20, 'BubbleSort', 6, 7)
-        self.heapsortbutton = Button(380, 550, 80, 30, 'arial', 20, 'HeapSort', 6, 7)
-        self.insertionsortbutton = Button(470, 550, 100, 30, 'arial', 20, 'InsertionSort', 6, 7)
-        self.newlistbutton = Button(580, 550, 70, 30, 'arial', 20, 'New List', 6, 7)
+        self.quicksortbutton = Button(240, 550, 80, 30, 'arial', 20, 'QuickSort', 6, 7)
+        self.mergesortbutton = Button(330, 550, 85, 30, 'arial', 20, 'MergeSort', 6, 7)
+        self.bubblesortbutton = Button(425, 550, 85, 30, 'arial', 20, 'BubbleSort', 6, 7)
+        self.heapsortbutton = Button(520, 550, 80, 30, 'arial', 20, 'HeapSort', 6, 7)
+        self.insertionsortbutton = Button(610, 550, 100, 30, 'arial', 20, 'InsertionSort', 6, 7)
+        self.newlistbutton = Button(720, 550, 70, 30, 'arial', 20, 'New List', 6, 7)
         self.list = []
 
     def createlist(self):
