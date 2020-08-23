@@ -60,22 +60,27 @@ class Game:
                     elif self.bubblesortbutton.chechkifclicked():
                         b = Sort(self.list)
                         b.bubble()
+                        pygame.event.clear()
 
                     elif self.insertionsortbutton.chechkifclicked():
                         b = Sort(self.list)
                         b.insertion()
+                        pygame.event.clear()
 
                     elif self.heapsortbutton.chechkifclicked():
                         b = Sort(self.list)
                         b.heap()
+                        pygame.event.clear()
 
                     elif self.mergesortbutton.chechkifclicked():
                         b = Sort(self.list)
                         b.merge()
+                        pygame.event.clear()
 
                     elif self.quicksortbutton.chechkifclicked():
                         b = Sort(self.list)
                         b.quick()
+                        pygame.event.clear()
 
 
 class Node:
