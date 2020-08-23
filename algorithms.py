@@ -14,8 +14,8 @@ class Sort:
                     self.list[y].drawrect(8)
                     self.list[y + 1].drawrect(8)
             self.list[self.size - x - 2].drawrect(2)
-            self.list[self.size - x - 1].drawrect(4)
-        self.list[0].drawrect(4)
+            self.list[self.size - x - 1].drawrect(5)
+        self.list[0].drawrect(5)
 
     def insertion(self):
         i = 1
@@ -25,12 +25,12 @@ class Sort:
                 self.list[j].drawrect(3)
                 self.list[j - 1].drawrect(3)
                 self.list[j - 1].height, self.list[j].height = self.list[j].height, self.list[j - 1].height
-                self.list[j - 1].drawrect(4)
-                self.list[j].drawrect(4)
+                self.list[j - 1].drawrect(5)
+                self.list[j].drawrect(5)
                 self.list[i].drawrect(2)
                 j -= 1
             i += 1
-        self.list[i - 1].drawrect(4)
+        self.list[i - 1].drawrect(5)
 
     def heap(self):
         pass
@@ -63,7 +63,7 @@ class Sort:
         for i in range(self.size):
             self.list[i].drawrect(3)
             self.list[i].height = temp[i]
-            self.list[i].drawrect(4)
+            self.list[i].drawrect(5)
 
     def quick(self):
         self.quicksort(0, self.size - 1)
@@ -87,17 +87,21 @@ class Sort:
                 i += 1
                 if self.list[i].height >= pivot:
                     break
+                else:
+                    self.list[high].drawrect(5)
             while True:
                 j -= 1
                 if self.list[j].height <= pivot:
                     break
+                else:
+                    self.list[high].drawrect(5)
             if i >= j:
-                self.list[mid].drawrect(4)
-                self.list[low].drawrect(4)
-                self.list[high].drawrect(4)
+                self.list[mid].drawrect(5)
+                self.list[low].drawrect(5)
+                self.list[high].drawrect(5)
                 return j
             self.list[i].drawrect(3)
             self.list[j].drawrect(3)
             self.list[i].height, self.list[j].height = self.list[j].height, self.list[i].height
-            self.list[i].drawrect(4)
-            self.list[j].drawrect(4)
+            self.list[i].drawrect(5)
+            self.list[j].drawrect(5)
