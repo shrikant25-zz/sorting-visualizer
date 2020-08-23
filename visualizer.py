@@ -3,7 +3,7 @@ import random
 from algorithms import Sort
 
 pygame.init()  # creates pygame instance
-screen = pygame.display.set_mode((800, 600))  # sets the size of window
+screen = pygame.display.set_mode((1200, 600))  # sets the size of window
 pygame.display.set_caption("Sorting Visualizer")  # sets the title
 
 # following is the dictionary containing colors
@@ -80,17 +80,16 @@ class Game:
 
 class Node:
     def __init__(self, xcoord, height):
-        self.xcoord = (xcoord * 10) + 20
+        self.xcoord = (xcoord * 12) + 100
         self.ycoord = 100
         self.height = height
-        self.width = 1
+        self.width = 8
         self.drawrect()
 
     def drawrect(self, flag=4):  # function to draw rectangle, excepts color-code, x-coordinate and y-coordinate
         pygame.draw.rect(screen, color[flag], [self.xcoord, self.ycoord, self.width,
                                                self.height])  # inbuilt pygame function to create rectangles
-        pygame.display.flip()  # updates the screen
-
+        pygame.display.update()  # updates the screen
 
 class Button:  # class use to create buttons
     def __init__(self, bxcoord, bycoord, bwidth, bheight, bfontname, bfontsize, btext, bcolorcode, btextcolor):
