@@ -10,8 +10,8 @@ class Sort:
                     self.list[y].drawrect(3)
                     self.list[y + 1].drawrect(3)
                     self.list[y].height, self.list[y + 1].height = self.list[y + 1].height, self.list[y].height
-                    self.list[y].drawrect(5)
-                    self.list[y + 1].drawrect(5)
+                    self.list[y].drawrect(5, True)
+                    self.list[y + 1].drawrect(5, True)
             self.list[self.size - x - 2].drawrect(2)
             self.list[self.size - x - 1].drawrect(8)
         self.list[0].drawrect(8)
@@ -24,8 +24,8 @@ class Sort:
                 self.list[j].drawrect(3)
                 self.list[j - 1].drawrect(3)
                 self.list[j - 1].height, self.list[j].height = self.list[j].height, self.list[j - 1].height
-                self.list[j - 1].drawrect(8)
-                self.list[j].drawrect(8)
+                self.list[j - 1].drawrect(8, True)
+                self.list[j].drawrect(8, True)
                 self.list[i].drawrect(2)
                 j -= 1
             i += 1
@@ -49,11 +49,11 @@ class Sort:
         j = iright
         for k in range(ileft, iend):
             if i < iright and (j >= iend or self.list[i].height <= self.list[j].height):
-                self.list[i].drawrect(5)
+                self.list[i].drawrect(5, True)
                 temp[k] = self.list[i].height
                 i += 1
             else:
-                self.list[j].drawrect(1)
+                self.list[j].drawrect(1, True)
                 temp[k] = self.list[j].height
                 j += 1
 
@@ -93,5 +93,6 @@ class Sort:
             self.list[i].drawrect(3)
             self.list[j].drawrect(3)
             self.list[i].height, self.list[j].height = self.list[j].height, self.list[i].height
-            self.list[i].drawrect(8)
-            self.list[j].drawrect(8)
+            self.list[i].drawrect(8, True)
+            self.list[j].drawrect(8, True)
+            self.list[j].drawrect(8, True)
