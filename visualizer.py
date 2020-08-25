@@ -1,5 +1,6 @@
 import pygame
 import random
+import threading
 from algorithms import Sort
 
 pygame.init()  # creates pygame instance
@@ -30,6 +31,8 @@ class Game:
         self.insertionsortbutton = Button(610, 550, 100, 30, 'arial', 20, 'InsertionSort', 6, 7)
         self.newlistbutton = Button(720, 550, 70, 30, 'arial', 20, 'New List', 6, 7)
         self.list = []
+        self.isalgorunning = False
+        self.runningthreadname = None
 
     def createlist(self):
         if self.list:
@@ -52,35 +55,53 @@ class Game:
                 if event.type == pygame.QUIT:  # if event type is quit, then proceed to quit the window
                     pygame.quit()  # end the pygame instance
                     quit()  # close the window
-                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # checks if mouse button is pressed
+
+                if self.runningthreadname is not None:
+                    if self.runningthreadname.is_alive() is False:
+                        self.isalgorunning = False
+                        self.runningthreadname = None
+
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and (
+                        self.isalgorunning is False):  # checks if mouse button is pressed
+
                     if self.newlistbutton.chechkifclicked():
                         pygame.display.flip()
                         self.createlist()
 
                     elif self.bubblesortbutton.chechkifclicked():
+                        self.isalgorunning = True
                         b = Sort(self.list)
-                        b.bubble()
-                        pygame.event.clear()
+                        t1 = threading.Thread(target=b.bubble)
+                        self.runningthreadname = t1
+                        t1.start()
 
                     elif self.insertionsortbutton.chechkifclicked():
-                        b = Sort(self.list)
-                        b.insertion()
-                        pygame.event.clear()
+                        self.isalgorunning = True
+                        i = Sort(self.list)
+                        t1 = threading.Thread(target=i.insertion)
+                        self.runningthreadname = t1
+                        t1.start()
 
                     elif self.heapsortbutton.chechkifclicked():
-                        b = Sort(self.list)
-                        b.heap()
-                        pygame.event.clear()
+                        self.isalgorunning = True
+                        h = Sort(self.list)
+                        t1 = threading.Thread(target=h.heap)
+                        self.runningthreadname = t1
+                        t1.start()
 
                     elif self.mergesortbutton.chechkifclicked():
-                        b = Sort(self.list)
-                        b.merge()
-                        pygame.event.clear()
+                        self.isalgorunning = True
+                        m = Sort(self.list)
+                        t1 = threading.Thread(target=m.merge)
+                        self.runningthreadname = t1
+                        t1.start()
 
                     elif self.quicksortbutton.chechkifclicked():
-                        b = Sort(self.list)
-                        b.quick()
-                        pygame.event.clear()
+                        self.isalgorunning = True
+                        q = Sort(self.list)
+                        t1 = threading.Thread(target=q.quick)
+                        self.runningthreadname = t1
+                        t1.start()
 
 
 class Node:
@@ -91,10 +112,14 @@ class Node:
         self.width = 8
         self.drawrect()
 
-    def drawrect(self, flag=4):  # function to draw rectangle, excepts color-code, x-coordinate and y-coordinate
+    def drawrect(self, flag=4,
+                 wait=False):  # function to draw rectangle, excepts color-code, x-coordinate and y-coordinate
         pygame.draw.rect(screen, color[flag], [self.xcoord, self.ycoord, self.width,
                                                self.height])  # inbuilt pygame function to create rectangles
         pygame.display.update()  # updates the screen
+        if wait is True:
+            pygame.time.wait(1)
+
 
 class Button:  # class use to create buttons
     def __init__(self, bxcoord, bycoord, bwidth, bheight, bfontname, bfontsize, btext, bcolorcode, btextcolor):
