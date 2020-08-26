@@ -31,8 +31,8 @@ class Game:
         self.insertionsortbutton = Button(610, 550, 100, 30, 'arial', 20, 'InsertionSort', 6, 7)
         self.newlistbutton = Button(720, 550, 70, 30, 'arial', 20, 'New List', 6, 7)
         self.list = []
-        self.isalgorunning = False
-        self.runningthreadname = None
+        self.isalgorunning = False  # flag to checks if the particular part is running
+        self.runningthreadname = None  # stores the name of the thread
 
     def createlist(self):
         if self.list:
@@ -56,8 +56,8 @@ class Game:
                     pygame.quit()  # end the pygame instance
                     quit()  # close the window
 
-                if self.runningthreadname is not None:
-                    if self.runningthreadname.is_alive() is False:
+                #  checks if thread exists and is it dead or not
+                if self.runningthreadname is not None and self.runningthreadname.is_alive() is False:
                         self.isalgorunning = False
                         self.runningthreadname = None
 
