@@ -1,3 +1,6 @@
+import math
+
+
 class Sort:
     def __init__(self, list):
         self.list = list
@@ -31,7 +34,44 @@ class Sort:
             i += 1
 
     def heap(self):
-        pass
+        self.heapify(self.size)
+        end = self.size - 1
+        while end > 0:
+            self.list[end].drawrect(3)
+            self.list[0].drawrect(3)
+            self.list[end].height, self.list[0].height = self.list[0].height, self.list[end].height
+            self.list[end].drawrect(8)
+            self.list[0].drawrect(8)
+            end -= 1
+            self.siftDown(0, end)
+
+    def heapify(self, count):
+        start = math.floor((count - 1) / 2)
+        while start >= 0:
+            self.siftDown(start, count - 1)
+            start -= 1
+
+    def siftDown(self, start, end):
+        root = start
+        while (2 * root + 1) <= end:
+            child = 2 * root + 1
+            swap = root
+
+            if self.list[swap].height < self.list[child].height:
+                swap = child
+
+            if child + 1 <= end and self.list[swap].height < self.list[child + 1].height:
+                swap = child + 1
+
+            if swap == root:
+                return
+            else:
+                self.list[swap].drawrect(3)
+                self.list[root].drawrect(3)
+                self.list[root].height, self.list[swap].height = self.list[swap].height, self.list[root].height
+                self.list[swap].drawrect(2)
+                self.list[root].drawrect(5)
+                root = swap
 
     def merge(self):
         temp = [0 for _ in range(self.size)]
