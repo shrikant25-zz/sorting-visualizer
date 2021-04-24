@@ -1,7 +1,7 @@
 import pygame
 import random
 import threading
-from algorithms import Sort
+import algorithms
 
 pygame.init()  # creates pygame instance
 screen = pygame.display.set_mode((1200, 600))  # sets the size of window
@@ -70,36 +70,36 @@ class Game:
 
                     elif self.bubblesortbutton.chechkifclicked():
                         self.isalgorunning = True
-                        b = Sort(self.list)
-                        t1 = threading.Thread(target=b.bubble)
+                        bubblesort = algorithms.Bubble(self.list)
+                        t1 = threading.Thread(target=bubblesort.bubble)
                         self.runningthreadname = t1
                         t1.start()
 
                     elif self.insertionsortbutton.chechkifclicked():
                         self.isalgorunning = True
-                        i = Sort(self.list)
-                        t1 = threading.Thread(target=i.insertion)
+                        insertionsort = algorithms.Insertion(self.list)
+                        t1 = threading.Thread(target=insertionsort.insertion)
                         self.runningthreadname = t1
                         t1.start()
 
                     elif self.heapsortbutton.chechkifclicked():
                         self.isalgorunning = True
-                        h = Sort(self.list)
-                        t1 = threading.Thread(target=h.heap)
+                        heapsort = algorithms.Heap(self.list)
+                        t1 = threading.Thread(target=heapsort.heap)
                         self.runningthreadname = t1
                         t1.start()
 
                     elif self.mergesortbutton.chechkifclicked():
                         self.isalgorunning = True
-                        m = Sort(self.list)
-                        t1 = threading.Thread(target=m.merge)
+                        mergesort = algorithms.Merge(self.list)
+                        t1 = threading.Thread(target=mergesort.merge)
                         self.runningthreadname = t1
                         t1.start()
 
                     elif self.quicksortbutton.chechkifclicked():
                         self.isalgorunning = True
-                        q = Sort(self.list)
-                        t1 = threading.Thread(target=q.quick)
+                        quicksort = algorithms.Quick(self.list)
+                        t1 = threading.Thread(target=quicksort.quick)
                         self.runningthreadname = t1
                         t1.start()
 

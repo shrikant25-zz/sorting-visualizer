@@ -6,6 +6,11 @@ class Sort:
         self.list = list
         self.size = len(self.list)
 
+
+class Bubble(Sort):
+    def __init__(self, list):
+        super().__init__(list)
+
     def bubble(self):
         for x in range(self.size - 1):
             for y in range(0, self.size - x - 1):
@@ -18,6 +23,11 @@ class Sort:
             self.list[self.size - x - 2].drawrect(2)
             self.list[self.size - x - 1].drawrect(8)
         self.list[0].drawrect(8)
+
+
+class Insertion(Sort):
+    def __init__(self, list):
+        super().__init__(list)
 
     def insertion(self):
         i = 1
@@ -32,6 +42,11 @@ class Sort:
                 self.list[i].drawrect(2)
                 j -= 1
             i += 1
+
+
+class Heap(Sort):
+    def __init__(self, list):
+        super().__init__(list)
 
     def heap(self):
         self.heapify(self.size)
@@ -73,6 +88,11 @@ class Sort:
                 self.list[root].drawrect(5)
                 root = swap
 
+
+class Merge(Sort):
+    def __init__(self, list):
+        super().__init__(list)
+
     def merge(self):
         temp = [0 for _ in range(self.size)]
         width = 1
@@ -102,6 +122,11 @@ class Sort:
             self.list[i].drawrect(3)
             self.list[i].height = temp[i]
             self.list[i].drawrect(8)
+
+
+class Quick(Sort):
+    def __init__(self, list):
+        super().__init__(list)
 
     def quick(self):
         self.quicksort(0, self.size - 1)
