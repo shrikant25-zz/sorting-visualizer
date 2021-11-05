@@ -113,7 +113,7 @@ class Node:
         self.drawrect()
 
     def drawrect(self, flag=4,
-                 wait=False):  # function to draw rectangle, excepts color-code, x-coordinate and y-coordinate
+                 wait=False):  # function to draw rectangle, accepts color-code, x-coordinate and y-coordinate
         pygame.draw.rect(screen, color[flag], [self.xcoord, self.ycoord, self.width,
                                                self.height])  # inbuilt pygame function to create rectangles
         pygame.display.update()  # updates the screen
